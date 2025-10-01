@@ -4,15 +4,19 @@ import { useState, useRef } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { addUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errMessage, setErrMessage] = useState(null);
+  const dispatch = useDispatch();
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
@@ -34,8 +38,25 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          updateProfile(user, {
+            displayName: nameRef.current.value,
+            photoURL: "https://media.licdn.com/dms/image/v2/D4D03AQHsc9_SKRF11g/profile-displayphoto-shrink_400_400/B4DZc_XKQ4GkAk-/0/1749114726729?e=1762387200&v=beta&t=lcF9BwkuEHArE6xNli217i0YvekgWnYGfwcLoPGzNPQ",
+          })
+            .then(() => {
+             const { uid, email, displayName, photoURL } = auth.currentUser;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrMessage(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;

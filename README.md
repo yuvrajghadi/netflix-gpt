@@ -18,6 +18,11 @@
 - BugFix - signUp user DisplayName and profile picture update
 - BugFix - if the user not login /Browse to Login page vise-versa   
 - usnsubscribe to onAuthStateChange callback
+- Add hardcoded values to the constants files
+- Register TMDB App & Created an app & gat access token
+- Get Data from TMDN Now playing movies list API
+ 
+
 
 # Features
 

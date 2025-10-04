@@ -17,7 +17,7 @@ const Body = () => {
 
 
   return (
-    <div>
+    <div className="h-screen">
       <RouterProvider router={appRouter} />
     </div>
   );

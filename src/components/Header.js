@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
+import { LOGO } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -41,11 +42,11 @@ const Header = () => {
   };
 
   return (
-    <div className="flex w-screen justify-between items-center px-8 py-4 ">
+    <div className="flex w-screen justify-between items-center px-4 py-4 absolute z-50">
       <div>
         <img
-          className="w-48  px-8 "
-          src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+          className="w-44  px-8 "
+          src= {LOGO}
           alt="Logo"
         />
       </div>
@@ -58,7 +59,7 @@ const Header = () => {
           <div>
             <button
               onClick={handleSignOut}
-              className="text-black font-semibold"
+              className="text-white font-semibold"
             >
               Sign Out
             </button>

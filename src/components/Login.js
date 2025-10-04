@@ -9,7 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
-import { USER_AVATAR } from "../utils/constant";
+import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -39,8 +39,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: nameRef.current.value,
-            photoURL:USER_AVATAR
-             
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -88,10 +87,10 @@ const Login = () => {
   };
 
   return (
-    <div className="relative h-screen w-full">
+    <div className="relative h-screen w-screen">
       {/* Background image */}
       <img
-        className="w-full h-full object-cover"
+        className="w-screen h-screen object-cover"
         src="https://assets.nflxext.com/ffe/siteui/vlv3/c95abc7a-8124-4630-bb7a-3b160bdc6de3/web/IN-en-20250915-TRIFECTA-perspective_d3d87aa7-58ed-4c6b-98dc-231ed05ba675_large.jpg"
         alt="LoginImage"
       />
@@ -100,14 +99,16 @@ const Login = () => {
       <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Header stays fixed at top */}
-      <div className="absolute top-0 left-0 w-full z-20">
+      <div className="absolute top-0 left-0 w-screen z-20">
         <Header />
       </div>
 
       {/* Sign-in form centered */}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col bg-black/70 p-8 rounded-md w-[28rem] h-[35rem] z-20"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+             flex flex-col bg-black/70 p-8 rounded-md w-[28rem] h-[35rem] z-20 
+             xs:w-[24rem]"
       >
         <div className="flex">
           <h1 className="text-4xl font-bold text-white m-2">

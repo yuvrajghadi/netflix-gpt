@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"; 
 import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {

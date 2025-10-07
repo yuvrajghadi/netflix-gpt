@@ -21,6 +21,17 @@
 - Add hardcoded values to the constants files
 - Register TMDB App & Created an app & gat access token
 - Get Data from TMDN Now playing movies list API
+- Custon hooks for Now playing movies
+- created movieSlice  
+- update store with movie data
+- plaining for mainContainer and Secondarycontainer 
+- Fetch data for trailer video
+- update store with trailer video data
+- embedded the youtube video
+- use tailwind to style
+
+
+
  
 
 

@@ -6,12 +6,12 @@ const MainContainer = () => {
   const movies = useSelector((state) => state.movies.nowPlayingMovies);
   if (!movies) return null;
 
-  const mainMovie = movies[1];
+  const mainMovie = movies[19];
 
   const { title, overview, id } = mainMovie;
 
   return (
-    <div className="bg-black">
+    <div className="bg-black   ">
       <VideoTitle title={title} overview={overview} />
       <VideoBackground movieId={id} />
     </div>

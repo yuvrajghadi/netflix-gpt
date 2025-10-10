@@ -29,6 +29,14 @@
 - update store with trailer video data
 - embedded the youtube video
 - use tailwind to style
+- build secondary container
+- build movie list
+- build move cards
+- TMDB IMG CDN URL
+- Made Browse page amazing with tailwind css
+- usepopular movie custom hook 
+
+
 
 
 

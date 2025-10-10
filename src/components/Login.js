@@ -9,7 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux"; 
-import { USER_AVATAR } from "../utils/constants";
+import { NETFLIX_BG, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -89,11 +89,7 @@ const Login = () => {
   return (
     <div className="relative h-screen w-screen">
       {/* Background image */}
-      <img
-        className="w-screen h-screen object-cover"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/c95abc7a-8124-4630-bb7a-3b160bdc6de3/web/IN-en-20250915-TRIFECTA-perspective_d3d87aa7-58ed-4c6b-98dc-231ed05ba675_large.jpg"
-        alt="LoginImage"
-      />
+     
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60"></div>

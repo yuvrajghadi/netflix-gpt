@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { setLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -41,6 +43,15 @@ const Header = () => {
       });
   };
 
+  const handleGptSearch = () => {
+    dispatch(toggleGptSearchView());
+
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(setLanguage(e.target.value));
+  };
+
   return (
     <div className="flex w-screen justify-between items-center px-4 py-4 absolute z-50">
       <div>
@@ -53,8 +64,18 @@ const Header = () => {
 
       {user && (
         <div className="flex items-center gap-4">
+          <select className="bg-gray-500 text-white m-2 py-1 px-2 rounded-md" onChange={handleLanguageChange}>
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
           <div>
             <img className="w-8 h-8 " src={user?.photoURL} alt="Avatar" />
+          </div>
+          <div>
+            <button className="text-white font-semibold bg-blue-600 m-2 py-1 px-3 rounded" onClick={handleGptSearch}>GPT Search</button>
           </div>
           <div>
             <button

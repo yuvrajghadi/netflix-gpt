@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice";
-import { useDispatch } from "react-redux"; 
+import { useDispatch } from "react-redux";
 import { NETFLIX_BG, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
@@ -68,10 +68,7 @@ const Login = () => {
         emailRef.current.value,
         passwordRef.current.value
       )
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-        })
+        .then(() => {})
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -88,8 +85,12 @@ const Login = () => {
 
   return (
     <div className="relative h-screen w-screen">
-      {/* Background image */}
-     
+      {/* ✅ ADDED: Background Image */}
+      <img
+        src={NETFLIX_BG}
+        alt="background"
+        className="absolute inset-0 w-full h-full object-cover brightness-50"
+      />
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60"></div>

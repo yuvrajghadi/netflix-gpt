@@ -4,7 +4,7 @@ import { NETFLIX_BG } from "../utils/constants";
 
 const GptSearch = () => {
   return (
-    <div >
+    <div  className="h-screen">
       <div className=" absolute -z-20">
        <img
         className="w-screen h-screen object-cover"

@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/langaugeConstats";
 import { useRef } from "react";
 import ai from "../utils/googleAi";
 import { API_OPTIONS } from "../utils/constants";
+import { addGptSearchResult } from "../utils/gptSlice";
 
 const GptSearchBar = () => {
+  const dispatch = useDispatch();
   const langKey = useSelector((store) => store.config.language);
   const searchtext = useRef();
 
@@ -15,6 +17,7 @@ const GptSearchBar = () => {
     );
 
     const json = await data.json();
+   
     return json.results;
   };
 
@@ -35,6 +38,8 @@ const GptSearchBar = () => {
     const movieDetailsPromises = movieNames.map((name) => movieSearchTMDB(name));
     const tmdbResult = await Promise.all(movieDetailsPromises);
     console.log(tmdbResult);
+
+    dispatch(addGptSearchResult({movieNames: movieNames, movieResults: tmdbResult }));
   };
 
 

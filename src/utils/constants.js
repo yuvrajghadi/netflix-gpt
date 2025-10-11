@@ -23,3 +23,6 @@ export const SUPPORTED_LANGUAGES = [
   {identifier: "spanish", name: "Spanish"},
   {identifier: "japanese", name: "Japanese"},
 ]
+
+
+export const GEMINI_API_KEY = "AIzaSyChMBKvFw4abSLv2R2kjegeg-KlPB6Znb4"

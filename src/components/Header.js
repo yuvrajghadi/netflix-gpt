@@ -11,6 +11,7 @@ import { setLanguage } from "../utils/configSlice";
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -36,8 +37,7 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-      })
+      .then(() => {})
       .catch((error) => {
         navigate("/error");
       });
@@ -45,7 +45,6 @@ const Header = () => {
 
   const handleGptSearch = () => {
     dispatch(toggleGptSearchView());
-
   };
 
   const handleLanguageChange = (e) => {
@@ -55,27 +54,36 @@ const Header = () => {
   return (
     <div className="flex w-screen justify-between items-center px-4 py-4 absolute z-50">
       <div>
-        <img
-          className="w-44  px-8 "
-          src= {LOGO}
-          alt="Logo"
-        />
+        <img className="w-44  px-8 " src={LOGO} alt="Logo" />
       </div>
 
       {user && (
         <div className="flex items-center gap-4">
-          <select className="bg-gray-500 text-white m-2 py-1 px-2 rounded-md" onChange={handleLanguageChange}>
+          {showGptSearch && (<select
+            className="appearance-none bg-transparent text-white border text-center border-gray-400 rounded-md m-2 py-1 px-3 focus:outline-none cursor-pointer"
+            onChange={handleLanguageChange}
+          >
             {SUPPORTED_LANGUAGES.map((lang) => (
-              <option key={lang.identifier} value={lang.identifier}>
+              <option
+                key={lang.identifier}
+                value={lang.identifier}
+                className="text-black"
+              >
                 {lang.name}
               </option>
             ))}
           </select>
+          )}
           <div>
             <img className="w-8 h-8 " src={user?.photoURL} alt="Avatar" />
           </div>
           <div>
-            <button className="text-white font-semibold bg-blue-600 m-2 py-1 px-3 rounded" onClick={handleGptSearch}>GPT Search</button>
+            <button
+              className="text-white font-semibold bg-blue-600 m-2 py-1 px-3 rounded"
+              onClick={handleGptSearch}
+            >
+              {showGptSearch ? "Home" : "GPT Search"}
+            </button>
           </div>
           <div>
             <button

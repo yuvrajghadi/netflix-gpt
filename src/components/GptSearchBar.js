@@ -2,10 +2,21 @@ import { useSelector } from "react-redux";
 import lang from "../utils/langaugeConstats";
 import { useRef } from "react";
 import ai from "../utils/googleAi";
+import { API_OPTIONS } from "../utils/constants";
 
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.language);
   const searchtext = useRef();
+
+  const movieSearchTMDB = async (name) => {
+    const data = await fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&page=1`,
+      API_OPTIONS
+    );
+
+    const json = await data.json();
+    return json.results;
+  };
 
   const handleGptSearchClick = async () => {
     const query =
@@ -18,7 +29,15 @@ const GptSearchBar = () => {
       contents: query,
     });
     console.log(response.text);
+    const movieNames = response.text.split(",");
+    console.log(movieNames);
+
+    const movieDetailsPromises = movieNames.map((name) => movieSearchTMDB(name));
+    const tmdbResult = await Promise.all(movieDetailsPromises);
+    console.log(tmdbResult);
   };
+
+
   return (
     <div className="pt-[10%] flex justify-center ">
       <div className="absolute w-screen h-screen inset-0 bg-black/60"></div>

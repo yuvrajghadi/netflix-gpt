@@ -11,13 +11,13 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
-    },
+    },  
   ]);
 
 
 
   return (
-    <div className=" overflow-hidden">
+    <div className=" m-0 p-0 box-border">
       <RouterProvider router={appRouter} />
     </div>
   );

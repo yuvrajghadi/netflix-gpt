@@ -52,9 +52,9 @@ const Header = () => {
   };
 
   return (
-    <div className="flex w-screen justify-between items-center px-4 py-4 absolute z-50">
+    <div className=" flex flex-col md:flex-row w-screen justify-between items-center px-4 py-4 absolute z-50">
       <div>
-        <img className="w-44  px-8 " src={LOGO} alt="Logo" />
+        <img className="w-48  px-8 " src={LOGO} alt="Logo" />
       </div>
 
       {user && (

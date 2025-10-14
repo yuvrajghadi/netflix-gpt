@@ -63,7 +63,7 @@ const GptSearchBar = () => {
       <div className="fixed w-screen h-screen inset-0 bg-black/60"></div>
 
       <form
-        className="flex w-1/2  z-10"
+        className="flex md:w-1/2  z-10"
         onSubmit={(e) => e.preventDefault()}
       >
         <input

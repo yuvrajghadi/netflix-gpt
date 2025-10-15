@@ -16,7 +16,7 @@ const Browse = () => {
   useUpcomingMovies();
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   return (
-<div className="text-white p-0 m-0 box-border overflow-x-hidden overflow-y-auto">
+<div className="text-white  box-border overflow-x-hidden overflow-y-auto">
       <Header />
       {showGptSearch ? (
         <GptSearch />

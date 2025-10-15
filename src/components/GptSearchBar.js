@@ -43,7 +43,7 @@ const GptSearchBar = () => {
         contents: query,
       });
 
-      const movieNames = response.text.split(",").map((m) => m.trim());
+      const movieNames = response.text.split(",").map((m) => m.trim()); 
       const movieDetailsPromises = movieNames.map((name) =>
         movieSearchTMDB(name)
       );

@@ -1,9 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addMovieTrailerVideo } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
 const useMovieTrailer = (movieId) => {
+
+  const  movieTrailerVideo  = useSelector((state) => state.movies.movieTrailerVideo);
   // Custom hook logic to fetch and return movie trailer data
 
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ const useMovieTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    getMovieVideo();
+ !movieTrailerVideo && getMovieVideo();
   }, []);
 };
 
